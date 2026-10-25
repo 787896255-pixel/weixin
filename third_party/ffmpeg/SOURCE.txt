@@ -1,0 +1,6 @@
+FFmpeg 7.1 is a separate executable from imageio-ffmpeg 0.6.0 (PyPI Windows wheel).
+FFmpeg source release: https://ffmpeg.org/releases/ffmpeg-7.1.tar.xz
+Binary distribution: https://github.com/imageio/imageio-binaries/tree/master/ffmpeg
+Build provider: inspect ffmpeg -version/-buildconf for exact compiler and configuration.
+License information: https://ffmpeg.org/legal.html
+This is an open-source subprocess codec, not a QXExporter executable or DLL.

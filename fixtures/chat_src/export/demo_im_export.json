@@ -1,0 +1,36 @@
+{
+  "exportInfo": {
+    "app": "DemoIM",
+    "version": "2.3.0"
+  },
+  "sessions": [
+    {
+      "sessionName": "运营小组",
+      "records": [
+        {
+          "createTime": 1709352000000,
+          "sender": "王五",
+          "content": "双十一活动页文案定稿了吗",
+          "isSend": 0
+        },
+        {
+          "createTime": 1709352060000,
+          "sender": "我",
+          "content": "定稿了，走审核流程",
+          "isSend": 1
+        }
+      ]
+    },
+    {
+      "sessionName": "客户-南方贸易",
+      "records": [
+        {
+          "createTime": 1709438400000,
+          "sender": "陈经理",
+          "content": "合同第二版已盖章，扫描件发您邮箱",
+          "isSend": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+Chatlog-derived Windows 3.x reader and SQLCipher authentication
+============================================================
+
+This product contains Python adaptations of portions of Chatlog.
+Original project: https://github.com/sjzar/chatlog
+Source snapshot: https://github.com/imldy/chatlog
+Revision: a7162bca9454fa43b5950a2414670983fe180e56
+Authors: Chatlog contributors.
+License: Apache License, Version 2.0; see third_party/chatlog/LICENSE.
+
+Upstream source files consulted and adapted:
+  internal/wechat/key/windows/v3_windows.go
+  internal/wechat/key/windows/v4_windows.go
+  internal/wechat/decrypt/windows/v3.go
+  internal/wechat/decrypt/common/common.go
+
+Modified files in this product:
+  wechatbrain/windows_reader.py
+  wechatbrain/sqlcipher.py
+
+Changes: ported the module and pointer search from Go to Python/ctypes;
+restricted access to same-user WeChat processes; bounded execution and memory;
+removed secret logging; added selected-database validation, cancellation,
+streaming private snapshots, complete-page checks, and SQLite integrity checks.
+Standard encrypted WAL commits are verified and merged into private snapshots (0.8.0).
+
+This is an independent adaptation, not an official release of Chatlog.
+
+wechat-decrypt-derived optional Windows 4.x startup connector
+=========================================================
+Source: https://github.com/freanocank/wechat-decrypt
+Revision: f0b3f9f95dda2d954ee3dbe1d139fb1944a5ecfd
+Original source: scripts/windows/extract_raw_key.py
+Copyright (c) 2026 cocofeng
+License: MIT; see third_party/wechat-decrypt/LICENSE.
+
+Adapted files: wechatbrain/capture_v4.js and wechatbrain/windows_capture.py.
+Changes: startup capture is an explicit UI action; the user manually restarts
+WeChat; no automatic termination, launch, signature change, or secret-file write;
+same-user processes only; candidates require selected-database HMAC validation;
+keys stay in RAM, while only public counters and status reach diagnostic output.
+This adapter has not been verified on the user's WeChat 4.1.15.55 build.
+The direct descriptor-capture path added in 0.6.1 is an independent implementation
+based on documented static observations of the user-selected installed artifact.
+It uses module-local instruction signatures and Frida IPC, not the vendor DLL,
+global Windows hooks, receiver-window names, vendor cache files, or licensing code.
+Both paths retain selected-database authentication and RAM-only candidate handling.
+
+Tabler Icons, @tabler/icons 3.49.0, MIT License. Selected outline SVG icons from the official npm package; license: app/web/icons/LICENSE.txt in the portable distribution.
+
+Chatlog-derived DAT and WXGF image layout (0.9.0)
+================================================
+Source snapshot: https://github.com/imldy/chatlog
+Revision: a7162bca9454fa43b5950a2414670983fe180e56
+Source files: pkg/util/dat2img/dat2img.go, pkg/util/dat2img/wxgf.go.
+Apache License 2.0; see third_party/chatlog/LICENSE.
+Adaptation: Python format checks, AES-ECB/XOR segment assembly and WXGF HEVC
+partition discovery in wechatbrain/media_codec.py; bounded processing and
+Pillow verification; open-source FFmpeg as a separate process. No vendor code.
+The upstream V2 placeholder key is not used as an account key.
+
+pysilk-mod 1.6.4
+================
+Project: https://github.com/DCZYewen/Python-Silk-Module
+Package: https://pypi.org/project/pysilk-mod/1.6.4/
+BSD-style licenses, Pybind and SILK notices: third_party/pysilk-mod/LICENSE.
+The installed wheel contains the Python bindings and native SILK codec.
+
+Pillow 12.1.0 and ImageIO-FFmpeg 0.6.0
+===================================
+Pillow license: runtime/Lib/site-packages/pillow-12.1.0.dist-info/licenses/LICENSE.
+ImageIO wrapper BSD-2-Clause: runtime/Lib/site-packages/imageio_ffmpeg-0.6.0.dist-info/LICENSE.
+Projects: https://python-pillow.org/ and https://github.com/imageio/imageio-ffmpeg
+The separate FFmpeg 7.1 executable is from the official ImageIO PyPI wheel,
+not from QXExporter. FFmpeg is GPL/LGPL software under its build configuration;
+its sources and build information are available at https://ffmpeg.org/releases/
+and https://github.com/imageio/imageio-binaries/tree/master/ffmpeg .
+This private development package does not label FFmpeg as BSD software.

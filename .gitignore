@@ -1,0 +1,54 @@
+# Python / local build environment
+__pycache__/
+*.py[cod]
+.venv/
+.build-venv/
+.build-tools/
+.build-cache/
+build/
+dist/
+*.spec
+*.log
+.DS_Store
+
+# Private source records, runtime library and exported content
+.wechatbrain/
+/wxid_*/
+/wxjl/
+/out/
+/source-cache/
+/exports/
+/*.png
+/*.jpg
+/*.jpeg
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+reader-keys.json
+local-keys.json
+
+# Databases are private except the generated synthetic fixtures
+*.db
+*.sqlite
+*.sqlite3
+*-wal
+*-shm
+*-journal
+!/fixtures/**/*.db
+!/fixtures/**/*.sqlite
+!/fixtures/**/*.sqlite3
+
+# Local screenshots and original-program analysis evidence
+/docs/**/*.png
+/docs/**/*.jpg
+/docs/**/*.jpeg
+/docs/**/*.webp
+*.hop
+*.hop64
+*.exe
+*.dll
+*.dmg
+*.zip
+*.whl
